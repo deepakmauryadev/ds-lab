@@ -11,11 +11,11 @@ Complex add_complex(Complex x, Complex y);
 Complex multiply_complex(Complex x, Complex y);
 
 int main() {
-  Complex n1, n2;
+  Complex c1, c2;
   printf("Enter complex number 1: ");
-  scanf("%d %d", &n1.a, &n1.b);
+  scanf("%d %d", &c1.a, &c1.b);
   printf("Enter complex number 2: ");
-  scanf("%d %d", &n2.a, &n2.b);
+  scanf("%d %d", &c2.a, &c2.b);
 
   int choice;
   printf("MENU\n");
@@ -24,12 +24,13 @@ int main() {
   printf("Enter your choice: ");
   scanf("%d", &choice);
 
-  if (choice == 1) {
-    Complex sum = add_complex(n1, n2);
-    printf("Sum is %d+%di\n", sum.a, sum.b);
-  } else if (choice == 2) {
-    Complex mul = multiply_complex(n1, n2);
-    printf("Product is %d+%di\n", mul.a, mul.b);
+  switch (choice) {
+    case 1:
+      Complex sum = add_complex(c1, c2);
+      printf("Sum is %d+%di\n", sum.a, sum.b);
+    case 2:
+      Complex mul = multiply_complex(c1, c2);
+      printf("Product is %d+%di\n", mul.a, mul.b);
   }
 
   return 0;
