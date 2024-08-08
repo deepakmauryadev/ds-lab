@@ -3,7 +3,7 @@
 #define MAX 20
 
 void insert(int arr[], int *n);
-void delete_elem(int arr[], int *n);
+void remove(int arr[], int *n);
 void search(int arr[], int n);
 void traverse(int arr[], int n);
 
@@ -33,7 +33,7 @@ int main() {
     switch (choice) {
       case 1: insert(arr, &n);
         break;
-      case 2: delete_elem(arr, &n);
+      case 2: remove(arr, &n);
         break;
       case 3: search(arr, n);
         break;
@@ -62,7 +62,7 @@ void insert(int arr[], int *n) {
   arr[pos-1] = elem;
 }
 
-void delete_elem(int arr[], int *n) {
+void remove(int arr[], int *n) {
   int pos;
   printf("Enter postion: ");
   scanf("%d", &pos);
