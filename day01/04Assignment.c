@@ -28,9 +28,11 @@ int main() {
     case 1:
       Complex sum = add_complex(c1, c2);
       printf("Sum is %d+%di\n", sum.a, sum.b);
+      break;
     case 2:
       Complex mul = multiply_complex(c1, c2);
       printf("Product is %d+%di\n", mul.a, mul.b);
+      break;
   }
 
   return 0;
