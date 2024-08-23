@@ -1,3 +1,5 @@
+// WAP to represent a given sparse matrix in 3-tuple format using 2-D array
+
 #include "stdio.h"
 
 int main() {

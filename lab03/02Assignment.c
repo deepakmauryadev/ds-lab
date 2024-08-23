@@ -1,63 +1,58 @@
+// WAP to perform addition of two given sparse matrix in 3-tuple format
+
 #include "stdio.h"
 
 int main() {
-  int n1, n2;
+  int nz1, nz2;
   printf("Enter size of sparse matrix 1: ");
-  scanf("%d", &n1);
+  scanf("%d", &nz1);
 
-  int sparseMtx1[n1][3];
+  int spxMtx1[nz1][3];
 
   printf("Enter sparse matrix 1 in 3-tuple format\n");
-  for (int i = 0; i<n1; i++) {
+  for (int i = 0; i < nz1; i++) {
     printf("%d: ", i);
-    scanf("%d %d %d", &sparseMtx1[i][0], &sparseMtx1[i][1], &sparseMtx1[i][2]);
+    scanf("%d %d %d", &spxMtx1[i][0], &spxMtx1[i][1], &spxMtx1[i][2]);
   }
 
   printf("Enter size of sparse matrix 2: ");
-  scanf("%d", &n2);
+  scanf("%d", &nz2);
 
-  int sparseMtx2[n2][3];
+  int spxMtx2[nz2][3];
 
   printf("\nEnter sparse matrix 2 in 3-tuple format\n");
-  for (int i = 0; i<n2; i++) {
+  for (int i = 0; i < nz2; i++) {
     printf("%d: ", i);
-    scanf("%d %d %d", &sparseMtx2[i][0], &sparseMtx2[i][1], &sparseMtx2[i][2]);
+    scanf("%d %d %d", &spxMtx2[i][0], &spxMtx2[i][1], &spxMtx2[i][2]);
   }
 
-  int resultantMtx[n1+n2][3];
-  int i1=0, i2=0, k=0;
+  int sumMtx[nz1 + nz2][3];
+  int i1 = 0, i2 = 0, k = 0;
 
-  while (i1 < n1 && i2 < n2) {
-    // error here
-    if (
-      sparseMtx2[i2][0] < sparseMtx1[i1][0] || 
-      sparseMtx2[i2][0] == sparseMtx1[i1][0] && sparseMtx2[i2][1] < sparseMtx1[i1][1]
-    ) {
-      resultantMtx[k][0] = sparseMtx2[i2][0];
-      resultantMtx[k][1] = sparseMtx2[i2][1];
-      resultantMtx[k++][1] = sparseMtx2[i2][2];
+  while (i1 < nz1 && i2 < nz2) {
+    if (spxMtx1[i1][0] == spxMtx2[i2][0] && spxMtx1[i1][1] == spxMtx2[i2][1]) {
+      sumMtx[k][0] = spxMtx1[i1][0];
+      sumMtx[k][1] = spxMtx1[i1][1];
+      sumMtx[k++][2] = spxMtx1[i1][2] + spxMtx2[i2][2];
+      ++i1;
       ++i2;
-    } else if (
-      sparseMtx1[i1] < sparseMtx2[i2] ||
-      sparseMtx1[i1][0] == sparseMtx2[i2][0] && sparseMtx1[i1][1] < sparseMtx2[i2][1]
-    ) {
-      resultantMtx[k][0] = sparseMtx1[i1][0];
-      resultantMtx[k][1] = sparseMtx1[i1][1];
-      resultantMtx[k++][1] = sparseMtx1[i1][2];
+    } else if (spxMtx1[i1][0] < spxMtx2[i2][0] || spxMtx1[i1][1] < spxMtx2[i2][1]) {
+      sumMtx[k][0] = spxMtx1[i1][0];
+      sumMtx[k][1] = spxMtx1[i1][1];
+      sumMtx[k++][2] = spxMtx1[i1][2];
       ++i1;
-    } else if (sparseMtx1[i1][0] == sparseMtx2[i2][0] && sparseMtx1[i1][1] == sparseMtx2[i2][1]) {
-      resultantMtx[k][0] = sparseMtx1[i1][0];
-      resultantMtx[k][1] = sparseMtx1[i1][1];
-      resultantMtx[k++][1] = sparseMtx1[i1][2] + sparseMtx2[i2][2];
-      ++i1;
+    } else if (spxMtx1[i1][0] > spxMtx2[i2][0] || spxMtx1[i1][1] > spxMtx2[i2][1]) {
+      sumMtx[k][0] = spxMtx2[i2][0];
+      sumMtx[k][1] = spxMtx2[i2][1];
+      sumMtx[k++][2] = spxMtx2[i2][2];
       ++i2;
     }
   }
 
   printf("\nResultant matrix in 3-tuple format\n");
-  for (int i = 0; i<k; i++) {
-    for (int j = 0; j<3; j++) {
-      printf("%d ", resultantMtx[i][j]);
+  for (int i = 0; i < k; i++) {
+    for (int j = 0; j < 3; j++) {
+      printf("%d ", sumMtx[i][j]);
     }
     printf("\n");
   }

@@ -1,3 +1,10 @@
+// WAP to create a 1-D array of n elements and perform the following menu based
+// operations using function. 
+// a. insert a given element at specific position. 
+// b. delete an element from a specific position of the array. 
+// c. linear search to search an element 
+// d. traversal of the array
+
 #include "stdio.h"
 
 #define MAX 20
@@ -31,22 +38,26 @@ int main() {
     scanf("%d", &choice);
 
     switch (choice) {
-      case 1: insert(arr, &n);
+      case 1:
+        insert(arr, &n);
         break;
-      case 2: remove(arr, &n);
+      case 2:
+        remove(arr, &n);
         break;
-      case 3: search(arr, n);
+      case 3:
+        search(arr, n);
         break;
-      case 4: traverse(arr, n);
+      case 4:
+        traverse(arr, n);
         break;
-      default: printf("Invalid choice!\n");
+      default:
+        printf("Invalid choice!\n");
         break;
     }
 
     printf("Do you want to continue: ");
     scanf("%d", &exit);
   } while (exit == 1);
-
 }
 
 void insert(int arr[], int *n) {
@@ -57,9 +68,9 @@ void insert(int arr[], int *n) {
   scanf("%d", &pos);
 
   ++(*n);
-  for (int i = *n-1; i >= pos; i--) arr[i] = arr[i-1];
+  for (int i = *n - 1; i >= pos; i--) arr[i] = arr[i - 1];
 
-  arr[pos-1] = elem;
+  arr[pos - 1] = elem;
 }
 
 void remove(int arr[], int *n) {
@@ -67,7 +78,7 @@ void remove(int arr[], int *n) {
   printf("Enter postion: ");
   scanf("%d", &pos);
 
-  for (int i=pos-1; i < *n-1; i++) arr[i] = arr[i+1];
+  for (int i = pos - 1; i < *n - 1; i++) arr[i] = arr[i + 1];
   --(*n);
 }
 
@@ -77,7 +88,7 @@ void search(int arr[], int n) {
   scanf("%d", &elem);
 
   int i;
-  for (i=0; i<n; i++) {
+  for (i = 0; i < n; i++) {
     if (arr[i] == elem) {
       printf("%d found on %d index\n", elem, i);
       break;
@@ -89,7 +100,7 @@ void search(int arr[], int n) {
 }
 
 void traverse(int arr[], int n) {
-  for (int i=0; i<n; i++) {
+  for (int i = 0; i < n; i++) {
     printf("%d ", arr[i]);
   }
   printf("\n");
