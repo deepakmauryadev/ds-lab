@@ -17,6 +17,7 @@ int main() {
 
   int transposeMtx[nz][3];
   int k = 0, curr = 0;
+
   while (k < nz) {
     for (int i=0; i<nz; i++) {
       if (spxMtx[i][1] == curr) {
@@ -27,6 +28,7 @@ int main() {
     }
     ++curr;
   }
+
   printf("\nTranspose of sparse matrix\n");
   for (int i = 0; i<nz; i++) {
     for (int j = 0; j<3; j++) {
