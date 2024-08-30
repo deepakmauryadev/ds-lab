@@ -2,14 +2,14 @@
 #include "stdlib.h"
 
 typedef struct Node {
-  int expo, coff;
+  int expo, coeff;
   struct Node *next;
 } Node;
 
-void insertAtEnd(Node **head, int expo, int coff) {
+void insertAtEnd(Node **head, int expo, int coeff) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->expo = expo;
-  newNode->coff = coff;
+  newNode->coeff = coeff;
   newNode->next = NULL;
 
   if (*head == NULL) *head = newNode;
@@ -29,16 +29,16 @@ Node* addPolynomial(Node *poly1, Node *poly2) {
     
     if (p1->expo == p2->expo) {
       newNode->expo = p1->expo;
-      newNode->coff = p1->coff + p2->coff;
+      newNode->coeff = p1->coeff + p2->coeff;
       p1 = p1->next;
       p2 = p2->next;
     } else if (p1->expo > p2->expo) {
       newNode->expo = p1->expo;
-      newNode->coff = p1->coff;
+      newNode->coeff = p1->coeff;
       p1 = p1->next;
     } else if (p2->expo > p1->expo) {
       newNode->expo = p2->expo;
-      newNode->coff = p2->coff;
+      newNode->coeff = p2->coeff;
       p2 = p2->next;
     }
     if (sum == NULL) sum = newNode;
@@ -55,7 +55,7 @@ Node* addPolynomial(Node *poly1, Node *poly2) {
 void displayPoly(Node *head) {
   Node *curr = head;
   while (curr != NULL) {
-    printf("%dx^%d", curr->coff, curr->expo);
+    printf("%dx^%d", curr->coeff, curr->expo);
     curr = curr->next;
     if (curr != NULL) printf("+");
   }
