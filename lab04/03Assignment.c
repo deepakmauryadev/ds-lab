@@ -5,14 +5,23 @@ typedef struct Node {
   int expo, coeff;
   struct Node *next;
 } Node;
+<<<<<<< HEAD
 
 void insertAtEnd(Node **head, int expo, int coeff) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->expo = expo;
   newNode->coeff = coeff;
+=======
+ 
+void insertAtEnd(Node **head, int expo, int coff) {
+  Node *newNode = (Node *)malloc(sizeof(Node));
+  newNode->expo = expo;
+  newNode->coff = coff;
+>>>>>>> 09ae020 (Initial Commit)
   newNode->next = NULL;
 
-  if (*head == NULL) *head = newNode;
+  if (*head == NULL) 
+    *head = newNode;
   else {
     Node *curr = *head;
     while (curr->next != NULL) curr = curr->next;
@@ -26,7 +35,11 @@ Node* addPolynomial(Node *poly1, Node *poly2) {
   while (p1 != NULL && p2 != NULL) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     newNode->next = NULL;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 09ae020 (Initial Commit)
     if (p1->expo == p2->expo) {
       newNode->expo = p1->expo;
       newNode->coeff = p1->coeff + p2->coeff;
@@ -41,13 +54,20 @@ Node* addPolynomial(Node *poly1, Node *poly2) {
       newNode->coeff = p2->coeff;
       p2 = p2->next;
     }
+<<<<<<< HEAD
     if (sum == NULL) sum = newNode;
+=======
+
+    if (sum == NULL) 
+      sum = newNode;
+>>>>>>> 09ae020 (Initial Commit)
     else {
       Node *temp = sum;
       while (temp->next != NULL) temp = temp->next;
       temp->next = newNode;
     }
   }
+<<<<<<< HEAD
 
   return sum;
 }
@@ -56,6 +76,16 @@ void displayPoly(Node *head) {
   Node *curr = head;
   while (curr != NULL) {
     printf("%dx^%d", curr->coeff, curr->expo);
+=======
+  
+  return sum;
+}
+
+void displayPloy(Node *head) {
+  Node *curr = head;
+  while (curr != NULL) {
+    printf("%dx^%d", curr->coff, curr->expo);
+>>>>>>> 09ae020 (Initial Commit)
     curr = curr->next;
     if (curr != NULL) printf("+");
   }
@@ -89,8 +119,15 @@ int main() {
   }
 
   Node *sum = addPolynomial(poly1, poly2);
+<<<<<<< HEAD
   printf("The sum is: ");
   displayPoly(sum);
 
+=======
+
+  printf("Sum is: ");
+  displayPloy(sum);
+  
+>>>>>>> 09ae020 (Initial Commit)
   return 0;
 }
