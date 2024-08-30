@@ -55,7 +55,7 @@ int main() {
         break;
     }
 
-    printf("Do you want to continue: ");
+    printf("Do you want to continue (1/0): ");
     scanf("%d", &exit);
   } while (exit == 1);
 }
