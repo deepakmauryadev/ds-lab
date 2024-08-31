@@ -88,19 +88,56 @@ void searchNode(Node *head, int key) {
 }
 
 void sortLL(Node **head) {
-  Node *first = *head;
-  while (first->next != NULL) {
-    Node *second = first->next;
+  Node *curr1 = *head;
 
-    while (second->next != NULL) {
-      if (second->data < first->data) {
-        if (first = *head);
-        else {}
+  while (curr1 != NULL) {
+    Node *curr2 = curr1->next;
+
+    while (curr2 != NULL) {
+      if (curr2->data < curr1->data) {
+        int temp = curr1->data;
+        curr1->data = curr2->data;
+        curr2->data = temp;
       }
+
+      curr2 = curr2->next;
     }
+    curr1 = curr1->next;
   }
-  
 }
+
+// void sortLLByNode(Node **head) {
+//   Node *curr1 = *head, *prev1 = NULL, *next1 = NULL;
+
+//   while (curr1->next != NULL) {
+//     Node *curr2 = curr1->next, *prev2 = curr1, *next2 = NULL;
+//     next1 = curr1->next;
+
+//     while (curr2->next != NULL) {
+//       next2 = curr2->next;
+
+//       if (curr2->data < curr1->data) {
+//         if (prev1 != NULL) prev1->next = curr2;
+
+//         if (prev1 == curr2) curr2->next = curr1;
+//         else curr2->next = next1;
+
+//         if (prev1 != curr2) prev2->next = curr1;
+
+//         curr1->next = next2;
+
+//         if (curr1 == *head) *head = curr2;
+//       }
+
+//       prev2 = curr2;
+//       curr2 = next2;
+//     }
+
+//     prev1 = curr1;
+//     curr1 = next1;
+//   }
+  
+// }
 
 void reverseLL(Node **head) {
   Node *curr = *head, *prev = NULL, *next = NULL;
@@ -175,6 +212,10 @@ int main() {
         printf("Enter key to search: ");
         scanf("%d", &elem);
         searchNode(head, elem);
+        break;
+      case 6:
+        sortLL(&head);
+        printf("List sorted!\n");
         break;
       case 7:
         reverseLL(&head);
