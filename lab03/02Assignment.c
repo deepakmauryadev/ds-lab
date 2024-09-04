@@ -30,22 +30,28 @@ int main() {
   int i1 = 0, i2 = 0, k = 0;
 
   while (i1 < nz1 && i2 < nz2) {
-    if (spxMtx1[i1][0] == spxMtx2[i2][0] && spxMtx1[i1][1] == spxMtx2[i2][1]) {
+    if (spxMtx1[i1][0] == spxMtx2[i2][0]) {
+      if (spxMtx1[i1][1] == spxMtx2[i2][1]) {
+        sumMtx[k][0] = spxMtx1[i1][0];
+        sumMtx[k][1] = spxMtx1[i1][1];
+        sumMtx[k++][2] = spxMtx1[i1++][2] + spxMtx2[i2++][2];
+      } else if (spxMtx1[i1][1] < spxMtx2[i2][1]) {
+        sumMtx[k][0] = spxMtx1[i1][0];
+        sumMtx[k][1] = spxMtx1[i1][1];
+        sumMtx[k++][2] = spxMtx1[i1++][2];
+      } else if (spxMtx1[i1][1] > spxMtx2[i2][1]) {
+        sumMtx[k][0] = spxMtx2[i2][0];
+        sumMtx[k][1] = spxMtx2[i2][1];
+        sumMtx[k++][2] = spxMtx2[i2++][2];
+      }
+    } else if (spxMtx1[i1][0] < spxMtx2[i2][0]) {
       sumMtx[k][0] = spxMtx1[i1][0];
       sumMtx[k][1] = spxMtx1[i1][1];
-      sumMtx[k++][2] = spxMtx1[i1][2] + spxMtx2[i2][2];
-      ++i1;
-      ++i2;
-    } else if (spxMtx1[i1][0] < spxMtx2[i2][0] || spxMtx1[i1][1] < spxMtx2[i2][1]) {
-      sumMtx[k][0] = spxMtx1[i1][0];
-      sumMtx[k][1] = spxMtx1[i1][1];
-      sumMtx[k++][2] = spxMtx1[i1][2];
-      ++i1;
-    } else if (spxMtx1[i1][0] > spxMtx2[i2][0] || spxMtx1[i1][1] > spxMtx2[i2][1]) {
+      sumMtx[k++][2] = spxMtx1[i1++][2];
+    } else if (spxMtx1[i1][0] > spxMtx2[i2][0]) {
       sumMtx[k][0] = spxMtx2[i2][0];
       sumMtx[k][1] = spxMtx2[i2][1];
-      sumMtx[k++][2] = spxMtx2[i2][2];
-      ++i2;
+      sumMtx[k++][2] = spxMtx2[i2++][2];
     }
   }
 
