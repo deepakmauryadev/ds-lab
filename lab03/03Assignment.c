@@ -4,7 +4,7 @@
 #include "stdio.h"
 
 typedef struct {
-  int coff, expo;
+  int coeff, expo;
 } Polynomial;
 
 int main() {
@@ -16,26 +16,26 @@ int main() {
 
   printf("Enter polynomail-1\n");
   for (int i=0; i<n+1; i++) {
-    printf("coff of x^%d: ", i);
-    scanf("%d", &p1[i].coff);
+    printf("coeff of x^%d: ", i);
+    scanf("%d", &p1[i].coeff);
     p1[i].expo = i;
   }
 
   printf("Enter polynomail-2\n");
   for (int i=0; i<n+1; i++) {
-    printf("coff of x^%d: ", i);
-    scanf("%d", &p2[i].coff);
+    printf("coeff of x^%d: ", i);
+    scanf("%d", &p2[i].coeff);
     p2[i].expo = i;
   }
 
   for (int i=0; i<n+1; i++) {
     sum[i].expo = i;
-    sum[i].coff = p1[i].coff + p2[i].coff;
+    sum[i].coeff = p1[i].coeff + p2[i].coeff;
   }
 
   printf("Resultant polynomail: ");
   for (int i=0; i<n+1; i++) {
-    printf("%dx^%d", sum[i].coff, sum[i].expo);
+    printf("%dx^%d", sum[i].coeff, sum[i].expo);
     if (i != n) printf("+");
   }
   printf("\n");

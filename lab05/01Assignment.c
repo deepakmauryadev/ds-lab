@@ -39,8 +39,8 @@ void insertAtPos(Node **head, int pos, int data) {
   } else {
     Node *curr = *head;
 
-    int i = 2;
-    while (curr != NULL && i < pos) {
+    int i = 1;
+    while (curr != NULL && i < pos-1) {
       curr = curr->next;
       ++i;
     }

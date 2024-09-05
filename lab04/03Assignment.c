@@ -37,7 +37,7 @@ Node* addPolynomial(Node *poly1, Node *poly2) {
       newNode->expo = p1->expo;
       newNode->coeff = p1->coeff;
       p1 = p1->next;
-    } else if (p2->expo > p1->expo) {
+    } else if (p1->expo < p2->expo) {
       newNode->expo = p2->expo;
       newNode->coeff = p2->coeff;
       p2 = p2->next;

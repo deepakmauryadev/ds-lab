@@ -15,7 +15,7 @@ int main() {
   printf("Enter the elements of the matrix\n");
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      printf("matrix[%d][%d]: ", i, j);
+      printf("[%d][%d]: ", i, j);
       scanf("%d", &matrix[i][j]);
     }
   }

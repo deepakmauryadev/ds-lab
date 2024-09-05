@@ -1,4 +1,4 @@
-// WAP to perform transpose of a given sparse matrix in 3-tuple forma
+// WAP to perform transpose of a given sparse matrix in 3-tuple format
 
 #include "stdio.h"
 
@@ -15,15 +15,15 @@ int main() {
     scanf("%d %d %d", &spxMtx[i][0], &spxMtx[i][1], &spxMtx[i][2]);
   }
 
-  int transposeMtx[nz][3];
+  int trpsMtx[nz][3];
   int k = 0, curr = 0;
 
   while (k < nz) {
     for (int i=0; i<nz; i++) {
       if (spxMtx[i][1] == curr) {
-        transposeMtx[k][0] = spxMtx[i][1];
-        transposeMtx[k][1] = spxMtx[i][0];
-        transposeMtx[k++][2] = spxMtx[i][2];
+        trpsMtx[k][0] = spxMtx[i][1];
+        trpsMtx[k][1] = spxMtx[i][0];
+        trpsMtx[k++][2] = spxMtx[i][2];
       }
     }
     ++curr;
@@ -32,7 +32,7 @@ int main() {
   printf("\nTranspose of sparse matrix\n");
   for (int i = 0; i<nz; i++) {
     for (int j = 0; j<3; j++) {
-      printf("%d ", transposeMtx[i][j]);
+      printf("%d ", trpsMtx[i][j]);
     }
     printf("\n");
   }
