@@ -10,6 +10,7 @@ Node* createNode(int data) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->next = NULL;
   newNode->data = data;
+  return newNode;
 }
 
 void insertAtEnd(Node **head, int data) {
@@ -35,6 +36,7 @@ void insertAtPos(Node **head, int pos, int data) {
 
   newNode->next = curr->next;
   curr->next = newNode;
+  if (pos == 1) *head = newNode;
 }
 
 void deleteAtPos(Node **head, int pos) {
@@ -46,7 +48,7 @@ void deleteAtPos(Node **head, int pos) {
     curr = curr->next;
     i++;
   }
-  if (i == 1) *head = (*head)->next;
+  if (pos == 1) *head = (*head)->next;
   else prev->next = curr->next;
 
   free(curr);
@@ -106,39 +108,6 @@ void sortLL(Node **head) {
   }
 }
 
-// void sortLLByNode(Node **head) {
-//   Node *curr1 = *head, *prev1 = NULL, *next1 = NULL;
-
-//   while (curr1->next != NULL) {
-//     Node *curr2 = curr1->next, *prev2 = curr1, *next2 = NULL;
-//     next1 = curr1->next;
-
-//     while (curr2->next != NULL) {
-//       next2 = curr2->next;
-
-//       if (curr2->data < curr1->data) {
-//         if (prev1 != NULL) prev1->next = curr2;
-
-//         if (prev1 == curr2) curr2->next = curr1;
-//         else curr2->next = next1;
-
-//         if (prev1 != curr2) prev2->next = curr1;
-
-//         curr1->next = next2;
-
-//         if (curr1 == *head) *head = curr2;
-//       }
-
-//       prev2 = curr2;
-//       curr2 = next2;
-//     }
-
-//     prev1 = curr1;
-//     curr1 = next1;
-//   }
-  
-// }
-
 void reverseLL(Node **head) {
   Node *curr = *head, *prev = NULL, *next = NULL;
 
@@ -159,14 +128,12 @@ int main() {
   printf("Enter number of nodes: ");
   scanf("%d", &n);
 
-  // int pointer d for cutting edge efficiency
-  int *d = (int *)malloc(sizeof(int));
+  int d;
   for (int i=0; i<n; i++) {
     printf("%d: ", i+1);
-    scanf("%d", d);
-    insertAtEnd(&head, *d);
+    scanf("%d", &d);
+    insertAtEnd(&head, d);
   }
-  free(d);
 
   int choice;
 
@@ -193,14 +160,14 @@ int main() {
         printf("Enter position: ");
         scanf("%d", &pos);
         insertAtPos(&head, pos, elem);
-        printf("Element inserted\n");
+        printf("Element inserted!\n");
         break;
       case 2:
         printf("Enter position: ");
         scanf("%d", &pos);
         printf("\n");
         deleteAtPos(&head, pos);
-        printf("Element deleted\n");
+        printf("Element deleted!\n");
         break;
       case 3:
         countNodes(head);
