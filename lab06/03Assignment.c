@@ -75,7 +75,7 @@ int main() {
       while (peek(stk) != '(') postfix[k++] = pop(stk);
       pop(stk);
     } else if (getPriority(infix[i]) > 0) {
-      while ((!isEmpty(stk) || peek(stk) != '(') && getPriority(peek(stk)) >= getPriority(infix[i]))
+      while (!isEmpty(stk) && (getPriority(peek(stk)) >= getPriority(infix[i]) || peek(stk) != '('))
         postfix[k++] = pop(stk);
       push(stk, infix[i]);
     } else {
