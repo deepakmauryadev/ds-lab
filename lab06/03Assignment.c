@@ -75,7 +75,7 @@ int main() {
       while (peek(stk) != '(') postfix[k++] = pop(stk);
       pop(stk);
     } else if (getPriority(infix[i]) > 0) {
-      while (!isEmpty(stk) && (getPriority(peek(stk)) >= getPriority(infix[i]) || peek(stk) != '('))
+      while ((!isEmpty(stk) || peek(stk) != '(') && getPriority(peek(stk)) >= getPriority(infix[i]))
         postfix[k++] = pop(stk);
       push(stk, infix[i]);
     } else {
@@ -83,10 +83,7 @@ int main() {
     }
   }
 
-  while (!isEmpty(stk)) {
-    if (peek(stk) == '(') pop(stk);
-    else postfix[k++] = pop(stk);
-  }
+  while (!isEmpty(stk)) postfix[k++] = pop(stk);
   postfix[k] = '\0';
 
   printf("Postfix expression: %s\n", postfix);
