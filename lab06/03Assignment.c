@@ -68,23 +68,16 @@ int main() {
   scanf("%s", infix);
 
   for (int i=0; infix[i] != '\0'; i++) {
-    switch (infix[i]) {
-      case '(':
-        push(stk, infix[i]);
-        break;
-      case ')':
-        while (peek(stk) != '(') postfix[k++] = pop(stk); // pop until (
-        pop(stk); // pop ( from stack
-        break;
-      default:
-        if (getPriority(infix[i]) > 0) {
-          while (!isEmpty(stk) && (getPriority(peek(stk)) >= getPriority(infix[i]) || peek(stk) != '('))
-            postfix[k++] = pop(stk);
-          push(stk, infix[i]);
-        } else {
-          postfix[k++] = infix[i];
-        }
-        break;
+    if (infix[i] == '(') push(stk, infix[i]);
+    else if (infix[i] == ')') {
+      while (peek(stk) != '(') postfix[k++] = pop(stk); // pop until (
+      pop(stk); // pop ( from stack
+    } else if (getPriority(infix[i]) > 0) {
+      while (!isEmpty(stk) && (getPriority(peek(stk)) >= getPriority(infix[i]) || peek(stk) != '('))
+        postfix[k++] = pop(stk);
+      push(stk, infix[i]);
+    } else {
+      postfix[k++] = infix[i];
     }
   }
 
