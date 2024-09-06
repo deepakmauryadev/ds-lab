@@ -70,8 +70,8 @@ int main() {
   for (int i=0; infix[i] != '\0'; i++) {
     if (infix[i] == '(') push(stk, infix[i]);
     else if (infix[i] == ')') {
-      while (peek(stk) != '(') postfix[k++] = pop(stk); // pop until (
-      pop(stk); // pop ( from stack
+      while (peek(stk) != '(') postfix[k++] = pop(stk);
+      pop(stk);
     } else if (getPriority(infix[i]) > 0) {
       while (!isEmpty(stk) && (getPriority(peek(stk)) >= getPriority(infix[i]) || peek(stk) != '('))
         postfix[k++] = pop(stk);
