@@ -1,6 +1,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+#define MAX_SIZE 100
+
 typedef struct Node {
   char data;
   struct Node *next;
@@ -61,8 +63,8 @@ int getPriority(char symbol) {
 int main() {
   Stack *stk = createStack();
 
-  char infix[50], postfix[50];
-  int k=0;
+  char infix[MAX_SIZE], postfix[MAX_SIZE];
+  int k = 0;
 
   printf("Enter infix expression: ");
   scanf("%s", infix);
