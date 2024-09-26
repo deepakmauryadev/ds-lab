@@ -16,7 +16,7 @@ Queue* createQueue(int size) {
 
 void enqueue(Queue *q, int data) {
   if (q->rear == q->size-1) printf("Queue Overflow!");
-  else { 
+else { 
     if (q->front == -1 && q->rear == -1) q->front = 0;
     q->arr[++(q->rear)] = data;
   }
