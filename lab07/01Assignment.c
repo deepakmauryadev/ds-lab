@@ -17,7 +17,7 @@ Queue* createQueue(int size) {
 void enqueue(Queue *q, int data) {
   if (q->rear == q->size-1) printf("Queue Overflow!");
   else { 
-    if (q->front == -1) q->front = 0;
+    if (q->front == -1 && q->rear == -1) q->front = 0;
     q->arr[++(q->rear)] = data;
   }
 }
@@ -28,9 +28,9 @@ int dequeue(Queue *q) {
     d = -1;
     printf("Queue Underflow!");
   } else if (q->rear == q->front) {
-    q->front = -1;
-    d = q->arr[(q->rear)--];
-  } else d = q->arr[(q->rear)--];
+    d = q->arr[q->front];
+    q->front = q->rear = -1;
+  } else d = q->arr[(q->front)++];
 
   return d;
 }
@@ -68,9 +68,32 @@ int main() {
     printf("Enter your choice: ");
     scanf("%d", &choice);
 
+    int elem;
+
     switch (choice) {
-      case 1: break;
-      default: break;
+      case 1: 
+        printf("Enter element: ");
+        scanf("%d", &elem);
+        enqueue(q, elem);
+        break;
+      case 2:
+        printf("%d deleted!\n", dequeue(q));
+        break;
+      case 3:
+        printf("isEmpty: ");
+        printf(isEmpty(q) ? "True" : "False");
+        printf("\n");
+        break;
+      case 4:
+        printf("isFull: ");
+        printf(isFull(q) ? "True" : "False");
+        printf("\n");
+        break;
+      case 5:
+        displayQueue(q);
+        break;
+      default: 
+        break;
     } 
   } while (choice != 6);
 
