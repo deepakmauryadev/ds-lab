@@ -31,10 +31,8 @@ void enqueue(Queue *q, int data) {
 
 int dequeue(Queue *q) {
   int d;
-  if (q->front == NULL) {
-    d = -1;
-    printf("Queue Underflow!\n");
-  } else {
+  if (q->front == NULL) printf("Queue Underflow!\n");
+  else {
     d = q->front->data;
     Node *temp = q->front;
     q->front = q->front->next;

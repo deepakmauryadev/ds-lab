@@ -24,13 +24,12 @@ void enqueue(Queue *q, int data) {
 
 int dequeue(Queue *q) {
   int d;
-  if (q->front == -1 && q->rear == -1) {
-    d = -1;
-    printf("Queue Underflow!\n");
-  } else if (q->rear == q->front) {
+  if (q->front == -1 && q->rear == -1) printf("Queue Underflow!\n");
+  else {
     d = q->arr[q->front];
-    q->front = q->rear = -1;
-  } else d = q->arr[(q->front)++];
+    if (q->rear == q->front) q->front = q->rear = -1;
+    else (q->front)++;
+  }
 
   return d;
 }
