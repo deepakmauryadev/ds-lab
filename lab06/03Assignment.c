@@ -27,9 +27,8 @@ void push(Stack *stk, char data) {
   newNode->data = data;
   newNode->next = NULL;
 
-  if (stk->head == NULL) {
-    stk->head = newNode;
-  } else {
+  if (stk->head == NULL) stk->head = newNode;
+  else {
     newNode->next = stk->head;
     stk->head = newNode;
   }
@@ -78,9 +77,7 @@ int main() {
       while (!isEmpty(stk) && (getPriority(peek(stk)) >= getPriority(infix[i]) || peek(stk) != '('))
         postfix[k++] = pop(stk);
       push(stk, infix[i]);
-    } else {
-      postfix[k++] = infix[i];
-    }
+    } else postfix[k++] = infix[i];
   }
 
   while (!isEmpty(stk)) postfix[k++] = pop(stk);

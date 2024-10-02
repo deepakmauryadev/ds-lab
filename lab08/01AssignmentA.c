@@ -36,10 +36,8 @@ int dequeueFront(Queue *q) {
 
 int dequeueRear(Queue *q) {
   int d;
-  if (q->front == -1 && q->rear == -1) {
-    d = -1;
-    printf("Queue Underflow!\n");
-  } else if (q->front == q->rear) {
+  if (q->front == -1 && q->rear == -1) printf("Queue Underflow!\n");
+  else if (q->front == q->rear) {
     d = q->arr[q->rear];
     q->front = q->rear = -1;
   } else d = q->arr[(q->rear)--];

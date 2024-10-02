@@ -14,8 +14,16 @@ Queue* createQueue(int size) {
   return q;
 }
 
+int isEmpty(Queue *q) {
+  return q->front == -1 && q->rear == -1;
+}
+
+int isFull(Queue *q) {
+  return q->rear == q->size-1;
+}
+
 void enqueue(Queue *q, int data) {
-  if (q->rear == q->size-1) printf("Queue Overflow!\n");
+  if (isFull(q)) printf("Queue Overflow!\n");
   else { 
     if (q->front == -1 && q->rear == -1) q->front = 0;
     q->arr[++(q->rear)] = data;
@@ -24,7 +32,7 @@ void enqueue(Queue *q, int data) {
 
 int dequeue(Queue *q) {
   int d;
-  if (q->front == -1 && q->rear == -1) printf("Queue Underflow!\n");
+  if (isEmpty(q)) printf("Queue Underflow!\n");
   else {
     d = q->arr[q->front];
     if (q->rear == q->front) q->front = q->rear = -1;
@@ -32,14 +40,6 @@ int dequeue(Queue *q) {
   }
 
   return d;
-}
-
-int isEmpty(Queue *q) {
-  return q->front == -1 && q->rear == -1;
-}
-
-int isFull(Queue *q) {
-  return q->rear == q->size-1;
 }
 
 void displayQueue(Queue *q) {

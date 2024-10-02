@@ -25,9 +25,8 @@ void push(Stack *stk, int data) {
   newNode->data = data;
   newNode->next = NULL;
 
-  if (stk->head == NULL) {
-    stk->head = newNode;
-  } else {
+  if (stk->head == NULL) stk->head = newNode;
+  else {
     newNode->next = stk->head;
     stk->head = newNode;
   }
