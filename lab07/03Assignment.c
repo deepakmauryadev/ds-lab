@@ -19,15 +19,17 @@ int isEmpty(Queue *q) {
 }
 
 int isFull(Queue *q) {
-  return (q->front == 0 && q->rear == q->size-1) || (q->front > 0 && q->rear == q->front-1);
+  return ((q->rear - q->front + q->size) % q->size) + 1 == q->size;
 }
 
 void enqueue(Queue *q, int data) {
   if (isFull(q)) printf("Queue Overflow!\n");
   else { 
-    if (q->front == -1 && q->rear == -1) q->front = 0;
-    if (q->rear == q->size-1 && q->front > 0) q->rear = -1;
-    q->arr[++(q->rear)] = data;
+    if (q->front == -1 && q->rear == -1) q->front = q->rear = 0;
+    else if (q->rear == q->size-1 && q->front > 0) q->rear = 0;
+    else q->rear++;
+
+    q->arr[q->rear] = data;
   }
 }
 
@@ -48,8 +50,7 @@ void displayQueue(Queue *q) {
   while (1) {
     printf("%d ", q->arr[i]);
     if (i == q->rear) break;
-    else if (i == q->size-1) i=0;
-    else ++i;
+    else i = (i+1) % q->size;
   }
   printf("\n");
 }
