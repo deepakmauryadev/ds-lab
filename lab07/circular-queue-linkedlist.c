@@ -8,15 +8,15 @@ typedef struct node {
 
 typedef struct {
   Node *front;
-} Queue;
+} CQueue;
 
-Queue* createQueue() {
-  Queue *q = (Queue*)malloc(sizeof(Queue));
+CQueue* createCQueue() {
+  CQueue *q = (CQueue*)malloc(sizeof(CQueue));
   q->front = NULL;
   return q;
 }
 
-void enqueue(Queue *q, int data) {
+void enqueue(CQueue *q, int data) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->data = data;
   newNode->next = newNode;
@@ -30,7 +30,7 @@ void enqueue(Queue *q, int data) {
   }
 }
 
-int dequeue(Queue *q) {
+int dequeue(CQueue *q) {
   int d;
   if (q->front == NULL) printf("Queue Underflow!\n");
   else {
@@ -45,11 +45,11 @@ int dequeue(Queue *q) {
   return d;
 }
 
-int isEmpty(Queue *q) {
+int isEmpty(CQueue *q) {
   return q->front == NULL;
 }
 
-void displayQueue(Queue *q) {
+void displayCQueue(CQueue *q) {
   Node *curr = q->front;
   while (curr->next != q->front) {
     printf("%d ", curr->data);
@@ -59,7 +59,7 @@ void displayQueue(Queue *q) {
 }
 
 int main() {
-  Queue *q = createQueue();
+  CQueue *q = createCQueue();
 
   printf("\t\tMENU\n");
   printf("1. Enqueue\n");
@@ -90,7 +90,7 @@ int main() {
         printf("\n");
         break;
       case 4:
-        displayQueue(q);
+        displayCQueue(q);
         break;
       default: 
         break;
