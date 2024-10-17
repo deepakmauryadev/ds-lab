@@ -8,7 +8,7 @@ typedef struct node {
 
 typedef struct {
   Node *front;
-} PriorityQueue;
+} PQueue;
 
 Node *createNode(int data, int priority) {
   Node *newNode = malloc(sizeof(Node));
@@ -19,14 +19,14 @@ Node *createNode(int data, int priority) {
   return newNode;
 } 
 
-PriorityQueue* createPriorityQueue() {
-  PriorityQueue *q = malloc(sizeof(PriorityQueue));
+PQueue* createPQueue() {
+  PQueue *q = malloc(sizeof(PQueue));
   q->front = NULL;
 
   return q;
 }
 
-void enqueue(PriorityQueue *q, int data, int priority) {
+void enqueue(PQueue *q, int data, int priority) {
   Node *newNode = createNode(data, priority);
 
   if (q->front == NULL) q->front = newNode;
@@ -47,7 +47,7 @@ void enqueue(PriorityQueue *q, int data, int priority) {
   }
 }
 
-int dequeue(PriorityQueue *q) {
+int dequeue(PQueue *q) {
   int d;
   if (q->front == NULL) printf("Queue Underflow!\n");
   else {
@@ -60,7 +60,7 @@ int dequeue(PriorityQueue *q) {
   return d;
 }
 
-void displayPriorityQueue(PriorityQueue *q) {
+void displayPQueue(PQueue *q) {
   Node *curr = q->front;
 
   printf("Data\tPriority\n");
@@ -72,7 +72,7 @@ void displayPriorityQueue(PriorityQueue *q) {
 }
 
 int main() {
-  PriorityQueue *q = createPriorityQueue();
+  PQueue *q = createPQueue();
 
   printf("\t\tMENU\n");
   printf("1. Enqueue\n");
@@ -99,7 +99,7 @@ int main() {
         printf("%d deleted!\n", dequeue(q));
         break;
       case 3:
-        displayPriorityQueue(q);
+        displayPQueue(q);
         break;
       default: 
         break;
