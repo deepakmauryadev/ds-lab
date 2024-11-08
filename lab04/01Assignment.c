@@ -10,6 +10,8 @@ Node * createNode(int data) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->next = NULL;
   newNode->data = data;
+
+  return newNode;
 }
 
 void insertAtEnd(Node **head, int data) {
