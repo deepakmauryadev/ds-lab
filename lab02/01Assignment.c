@@ -9,57 +9,6 @@
 
 #define MAX 20
 
-void insert(int arr[], int *n);
-void remove(int arr[], int *n);
-void search(int arr[], int n);
-void traverse(int arr[], int n);
-
-int main() {
-  int n;
-  printf("Enter the size of the array: ");
-  scanf("%d", &n);
-
-  int arr[MAX];
-  printf("Enter the elements of the array\n");
-  for (int i = 0; i < n; i++) {
-    printf("%d: ", i);
-    scanf("%d", &arr[i]);
-  }
-
-  int choice, exit;
-
-  do {
-    printf("\n***MENU***\n");
-    printf("1. insert\n");
-    printf("2. delete\n");
-    printf("3. linear search\n");
-    printf("4. traverse\n");
-    printf("Enter your choice: ");
-    scanf("%d", &choice);
-
-    switch (choice) {
-      case 1:
-        insert(arr, &n);
-        break;
-      case 2:
-        remove(arr, &n);
-        break;
-      case 3:
-        search(arr, n);
-        break;
-      case 4:
-        traverse(arr, n);
-        break;
-      default:
-        printf("Invalid choice!\n");
-        break;
-    }
-
-    printf("Do you want to continue (1/0): ");
-    scanf("%d", &exit);
-  } while (exit == 1);
-}
-
 void insert(int arr[], int *n) {
   int elem, pos;
   printf("Enter element: ");
@@ -73,7 +22,7 @@ void insert(int arr[], int *n) {
   arr[pos - 1] = elem;
 }
 
-void remove(int arr[], int *n) {
+void removePos(int arr[], int *n) {
   int pos;
   printf("Enter postion: ");
   scanf("%d", &pos);
@@ -105,3 +54,50 @@ void traverse(int arr[], int n) {
   }
   printf("\n");
 }
+
+int main() {
+  int n;
+  printf("Enter the size of the array: ");
+  scanf("%d", &n);
+
+  int arr[MAX];
+  printf("Enter the elements of the array\n");
+  for (int i = 0; i < n; i++) {
+    printf("%d: ", i);
+    scanf("%d", &arr[i]);
+  }
+
+  int choice, exit;
+
+  do {
+    printf("\n***MENU***\n");
+    printf("1. insert\n");
+    printf("2. delete\n");
+    printf("3. linear search\n");
+    printf("4. traverse\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+      case 1:
+        insert(arr, &n);
+        break;
+      case 2:
+        removePos(arr, &n);
+        break;
+      case 3:
+        search(arr, n);
+        break;
+      case 4:
+        traverse(arr, n);
+        break;
+      default:
+        printf("Invalid choice!\n");
+        break;
+    }
+
+    printf("Do you want to continue (1/0): ");
+    scanf("%d", &exit);
+  } while (exit == 1);
+}
+
