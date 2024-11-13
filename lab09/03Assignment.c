@@ -79,12 +79,11 @@ int main() {
   printf("\n");
   printf("\tMENU\n");
   printf("1. Insert\n");
-  printf("2. Insert\n");
-  printf("3. Display Largest element\n");
-  printf("4. Display smallest element\n");
-  printf("5. Height of a node\n");
-  printf("6. Number of leaf nodes\n");
-  printf("7. Exit\n");
+  printf("2. Display Largest element\n");
+  printf("3. Display smallest element\n");
+  printf("4. Height of a node\n");
+  printf("5. Number of leaf nodes\n");
+  printf("6. Exit\n");
 
   do {
     printf("Enter option: ");
@@ -117,14 +116,11 @@ int main() {
         printf("No of leaf nodes: %d\n", noOfLeafNodes(root));
         break;
 
-      case 6:
-        break;
-
       default:
         break;
     }
 
-  } while (option != 7);
+  } while (option != 6);
 
   return 0;
 }
