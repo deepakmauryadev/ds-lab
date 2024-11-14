@@ -21,12 +21,12 @@ int partision(int arr[], int start, int end) {
   return j;
 }
 
-void quickSort(int arr[], int n, int start, int end) {
+void quickSort(int arr[], int start, int end) {
   if (start < end) {
     int p = partision(arr, start, end);
 
-    quickSort(arr, n, start, p-1);
-    quickSort(arr, n, p+1, end);
+    quickSort(arr, start, p-1);
+    quickSort(arr, p+1, end);
   }
 }
 
@@ -44,7 +44,7 @@ int main() {
     arr[i] = x;
   }
 
-  quickSort(arr, n, 0, n-1);
+  quickSort(arr, 0, n-1);
   printf("Ascending Order: ");
   for (int i=0; i<n; i++) 
     printf("%d ", arr[i]);
