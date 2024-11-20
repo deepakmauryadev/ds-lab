@@ -1,6 +1,5 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include <threads.h>
 
 typedef struct TreeNode {
   int data;
@@ -60,7 +59,8 @@ TreeNode* deleteNode(TreeNode *root, int target) {
     } else if (root->left == NULL || root->right == NULL) {
       TreeNode *temp;
       if (root->left != NULL) temp = root->left;
-      root = root->left;
+      if (root->right != NULL) temp = root->right;
+      root = temp;
       free(temp);
     } else {
 

@@ -1,5 +1,4 @@
 #include "stdio.h"
-#include <math.h>
 
 void merge(int arr[], int start, int mid, int end) {
   int n1 = mid - start + 1;
@@ -19,7 +18,6 @@ void merge(int arr[], int start, int mid, int end) {
 
   while (i1 < n1) arr[k++] = leftArr[i1++];
   while (i2 < n1) arr[k++] = leftArr[i2++];
-
 }
 
 void mergeSort(int arr[], int start, int end) {
